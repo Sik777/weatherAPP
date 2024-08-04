@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="weather_app.css">
+    <script src="eel.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); 
+    </style>
+</head>
+<body>
+    <form action="#" style="display: flex;">
+        <input type="text" value="Алматы" placeholder="Город" class="city" id="city">
+        <button class="lupa" id="lupa" type="button">🔍︎</button>
+    </form>
+    <section class="temperature_weather">
+        <div class="temperature" id="temperature">0°C</div>
+        <div class="weather">
+            <div class="weather_smile" id="weather_smile">☀️</div>
+            <div class="weather_text" id="weather_text">Перемнноя облачность</div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector("#lupa").addEventListener("click", async () => {
+            // Получаем значение города
+            const city = document.querySelector("#city").value;
+            
+            // Отправляем запрос к функции Python
+            const weatherData = await eel.weather_check(city)();
+
+
+            // Обновляем температуру
+            document.querySelector("#temperature").textContent = weatherData.temperature;
+
+            document.querySelector("#weather_text").textContent = weatherData.precipitation;
+
+            document.querySelector("#weather_smile").textContent = weatherData.weather_smile;
+        });
+    </script>
+</body>
+</html>
