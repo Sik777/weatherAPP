@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Check</title>
+    <link rel="stylesheet" href="weather_app.css">
+    <script src="eel.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); 
+    </style>
+</head>
+<body>
+    <section class="left">
+        <form action="#" style="display: flex; bottom: 100px;">
+            <input type="text" value="Алматы" placeholder="Город" class="city" id="city" autocomplete="off">
+            <button class="lupa" id="lupa" type="button">🔍︎</button>
+        </form>
+        <section class="time_day">
+            <div class="day" id="day"></div>
+
+            <div class="time" id="time"></div>
+            <div class="time_img"> <img id="time_img" src="" alt="" height="30px"></div>
+        </section>
+        <section class="dop_info">
+            <div class="pro_addi">
+                <div class="pro_addi_result" id="pro_addi_result"></div>
+                <div class="pro_addi_text" id="pro_addi_text">Вероятность осадков</div>
+            </div>
+            <div class="humidity">
+                <div class="humidity_result" id="humidity_result"></div>
+                <div class="humidity_text" id="humidity_text">Влажность</div>
+            </div>
+            <div class="wind">
+                <div class="wind_result1">
+                    <div class="wind_result" id="wind_result"></div>
+                    <div class="wind_s" id="wind_s"></div>
+                </div>
+                <div class="wind_text" id="wind_text">Ветер</div>
+            </div>
+        </section>
+    </section>
+
+
+    <section class="right">
+        <section class="temperature_weather">
+            <div class="temperature" id="temperature"></div>
+            <div class="weather">
+                <div class="weather_img">
+                    <img id="weather_img" src="" alt="Weather icon" height="70px">
+                </div>
+                <div class="weather_text" id="weather_text"></div>
+            </div>
+        </section>
+    </section>
+    
+    
+    <script>
+        async function updateWeather(city) {
+            // Отправляем запрос к функции Python
+            const weatherData = await eel.weather_check(city)();
+            // Обновляем температуру
+            document.querySelector("#temperature").textContent = weatherData.temperature;
+            // Обновляем текст погоды
+            document.querySelector("#weather_text").textContent = weatherData.precipitation;
+            // Обновляем смайл погоды
+            document.querySelector("#weather_img").src = weatherData.weather_img;
+            
+            document.querySelector("#day").textContent = weatherData.day;
+
+            document.querySelector("#time").textContent = weatherData.time;
+
+            document.querySelector("#time_img").src = weatherData.time_img;
+
+            document.querySelector("#pro_addi_result").textContent = weatherData.pro_addi;
+
+            document.querySelector("#humidity_result").textContent = weatherData.humidity;
+
+            document.querySelector("#wind_result").textContent = weatherData.wind;
+            document.querySelector("#wind_s").textContent = weatherData.wind_s;
+        
+            const timeInt = parseInt(weatherData.time);
+            const weather = weatherData.precipitation
+
+            if (weather == 'Дождь' || weather == 'Пасмурно' || weather == 'Ливень' || weather == 'Гроза' || weather == 'Туман' || weather == 'Небольшие ливневые дожди' || weather == 'Сильная гроза'){
+                document.body.style.background = 'linear-gradient(to bottom right, #74758f, #525163)';
+            } else if (weather == 'Снег' || weather == 'Метель'){
+                document.body.style.background = 'linear-gradient(to bottom right, #adc7ff, #80a1d3)';
+            } else if (timeInt >= 6 && timeInt < 12) {
+                document.body.style.background = 'linear-gradient(to top left, #f5f11c, 10%, #458fe4)';
+            } else if(timeInt >= 12 && timeInt < 18) {
+                document.body.style.background = 'linear-gradient(to bottom right, #3970d8, #2637cc';
+            } else if(timeInt >= 18 && timeInt < 22) {
+                document.body.style.background = 'linear-gradient(to bottom right, #040349, #110d35)';
+            } else {
+                document.body.style.background = 'linear-gradient(to bottom right, #02023f, #02021f)';
+            }
+        }
+        
+
+        document.querySelector("#lupa").addEventListener("click", () => {
+            // Получаем значение города
+            const city = document.querySelector("#city").value;
+            updateWeather(city);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Загрузка погоды для Алматы при запуске
+            updateWeather("Алматы");
+        });
+    </script>
+</body>
+</html>
