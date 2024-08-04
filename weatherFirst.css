@@ -1,0 +1,85 @@
+body {
+    height: 1000px;
+    background: linear-gradient(to bottom right, #908ef3, #2f1e5f);
+    font-family: Roboto;
+    color: #ffffff;
+    display: flex;
+    padding: 15px;
+}
+
+.city {
+    border: 0;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    outline: none;
+    font-size: 25px;
+    width: 300px;
+    height: 25px;
+    padding: 15px;
+    color: #ffffff;
+    margin-right: 5px;
+}
+.city:hover{
+    background-color: rgba(240, 240, 240, 0.4);
+}
+.lupa{
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 13px;
+    height: 55px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+}
+.lupa:hover{
+    background-color: rgba(240, 240, 240, 0.4);
+}
+
+.temperature_weather {
+    border: 0 solid;
+    margin-left: 20px;
+    width: 100%;
+    height: 15%;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-top: -14px;
+}
+
+.temperature {
+    background-color: rgba(255, 255, 255, 0.4);
+    font-size: 80px;
+    margin-right: 20px;
+    border-radius: 10px;
+    width: auto; /* Измените ширину для лучшего отображения */
+    padding: 15px;
+    display: flex; /* Используйте Flexbox для вертикального выравнивания */
+    align-items: center; /* Центрирование по вертикали */
+    text-align: center;
+    justify-content: center;
+    height: 60%;
+    width: 100%;
+}
+
+.weather {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    width: auto; /* Измените ширину для лучшего отображения */
+    padding: 15px;
+    display: block; /* Используйте Flexbox для вертикального выравнивания */
+    align-items: center; /* Центрирование по вертикали */
+    text-align: center;
+    justify-content: center;
+    height: 60%;
+    width: 100%;
+}
+.weather_smile{
+    font-size: 60px;
+    margin-top: -20px;
+}
+.weather_text{
+    font-size: 15px;
+}
