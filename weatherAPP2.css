@@ -1,0 +1,116 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+body{
+    padding: 15px;
+    font-family: Roboto;
+    display: flex;
+    color: rgb(255, 255, 255);
+}
+.left{
+    margin-right: 20px;
+}
+.right{
+    display: grid;
+    height: 115px;
+    width: 100vh;
+}
+
+.city, .lupa{
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.347);
+    font-size: 25px;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+}
+.city{
+    border-radius: 15px 0px 0px 15px;
+    outline: none;
+    text-transform: capitalize;
+    height: 30px;
+}
+.city::placeholder {
+    color: #ffffff;
+}
+.lupa{
+    border-radius:  0px 15px 15px 0px;
+    height: 50px;
+}
+.lupa:hover{
+    font-size: 23px;
+    padding: 11px;
+}
+
+.temperature_weather{
+    display: flex;
+}
+.temperature, .weather{
+    background-color: rgba(255, 255, 255, 0.347);
+    border-radius: 10px;
+    padding: 10px;
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.temperature{
+    font-size: 80px;
+    margin-right: 10px;
+}
+
+.time_day{
+    background-color: rgba(255, 255, 255, 0.347);
+    border-radius: 10px;
+    padding: 10px;
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+    display: flex;
+    height: 70px;
+    font-size: 30px;
+}
+.time_img{
+    margin-top: 12px;
+}
+.time{
+    margin-left: 10px;
+}
+
+.dop_info{
+    display: flex;
+}
+.pro_addi, .humidity, .wind{
+    background-color: rgba(255, 255, 255, 0.347);
+    border-radius: 10px;
+    padding: 10px;
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 100px;
+}
+.humidity{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.pro_addi_result, .humidity_result, .wind_result{
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+.pro_addi_text, .humidity_text, .wind_text{
+    font-size: 15px;
+}
+.wind_result1{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.wind_s{
+    font-size: 15px;
+}
